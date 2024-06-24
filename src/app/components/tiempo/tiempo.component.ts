@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-tiempo',
@@ -23,8 +24,9 @@ export class TiempoComponent implements OnInit{
   //metodo que crea e inicia un formulario y se debe importar  reactiveFormModule en este componene para poder usarlo en html
   iniciaFormulario(){
     this.formulario = this.fb.group({
-      Ciudad: ['Santiago'],
-      Codigo: ['CL']
+      //se agregan validaciones a los campos
+      Ciudad: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]],
+      Codigo: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]*$')]]
     })
   }
 
