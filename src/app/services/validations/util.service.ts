@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,15 @@ import { Injectable } from '@angular/core';
 export class UtilService {
 
   constructor() { }
+
+  noSantiago(control: FormControl){
+    const value: String = control.value?.trim().toLowerCase();
+    if(value === "santiago"){
+      return{
+        noSantiago: true
+      }
+    }
+
+    return null;
+  }
 }
